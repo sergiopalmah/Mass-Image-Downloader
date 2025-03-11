@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mass Image Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: #768591;
+            margin: 0;
+            padding: 15px;
+            width: 260px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #007EE3;
+        }
+
+        .button-container {
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #007EE3;
+            border: 2px solid #768591;
+            color: #FFFFFF;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #768591;
+            border-color: #007EE3;
+            color: #FFFFFF;
+        }
+
+        .settings-link {
+            display: block;
+            margin-top: 10px;
+            font-size: 13px;
+            text-decoration: none;
+            color: #007EE3;
+            font-weight: bold;
+        }
+
+        .settings-link:hover {
+            text-decoration: underline;
+            color: #768591;
+        }
+
+        .version-info {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #A0A0A0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mass Image Downloader</h1>
+
+    <div class="button-container">
+        <button id="start">📥 Bulk Image Download</button>
+    </div>
+
+    <div class="button-container">
+        <button id="extract-gallery">📸 Extract Gallery Images</button>
+    </div>
+
+    <a href="#" id="settings" class="settings-link">&#128295; Settings</a>
+
+    <p class="version-info">Version <span id="extension-version">Loading...</span></p>
+
+    <script src="../script/popup.js"></script>
+</body>
+</html>

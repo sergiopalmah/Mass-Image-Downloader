@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mass Image Downloader - Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #FFFFFF;
+            color: #768591;
+            margin: 0;
+            padding: 15px;
+            width: 360px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 12px;
+            color: #007EE3;
+        }
+
+        h2 {
+            font-size: 14px;
+            margin-top: 20px;
+            color: #007EE3;
+        }
+
+        .description {
+            font-size: 12px;
+            color: #6C757D;
+            margin-bottom: 8px;
+        }
+
+        .option-group {
+            margin-bottom: 12px;
+            padding: 10px;
+            background: #EDEEDF1;
+            border-radius: 6px;
+            width: 100%;
+            box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-weight: bold;
+            color: #768591;
+        }
+
+        input[type="radio"], input[type="number"], input[type="checkbox"], select {
+            margin-right: 5px;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 6px;
+            margin-top: 4px;
+            border: 2px solid #007EE3;
+            border-radius: 4px;
+            background-color: #FFFFFF;
+            color: #768591;
+            font-size: 13px;
+        }
+
+        .info-text {
+            font-size: 11px;
+            color: #768591;
+            margin-top: 4px;
+            opacity: 0.8;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            background-color: #007EE3;
+            border: 2px solid #768591;
+            color: #FFFFFF;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        button:hover {
+            background-color: #768591;
+            border-color: #007EE3;
+            color: #FFFFFF;
+        }
+
+        hr {
+            margin: 15px 0;
+            border: none;
+            border-top: 1px solid #768591;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #AAA;
+            margin-top: 15px;
+            opacity: 0.8;
+        }
+
+        .footer strong {
+            color: #007EE3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mass Image Downloader - Options</h1>
+
+    <!-- 🌍 Global Settings -->
+    <h2>🌍 Global Settings</h2>
+    <p class="description">These settings apply to all image extraction features.</p>
+    
+    <div class="option-group">
+        <label>Choose Download Folder:</label>
+        <input type="radio" name="downloadFolder" id="defaultFolder" checked> Default system folder
+        <br>
+        <input type="radio" name="downloadFolder" id="customFolder"> Custom folder
+        <input type="text" id="folderPath" placeholder="Enter folder path" disabled>
+        <p class="info-text">This folder must exist within the default download folder, otherwise it will be generated.</p>
+    </div>
+
+    <div class="option-group">
+        <label>Allowed Image Formats:</label>
+        <input type="checkbox" id="allowJPG" checked> JPG
+        <input type="checkbox" id="allowJPEG" checked> JPEG
+        <input type="checkbox" id="allowPNG" checked> PNG
+        <input type="checkbox" id="allowWEBP" checked> WEBP
+    </div>
+
+    <div class="option-group">
+        <label>Max Simultaneous Downloads:</label>
+        <input type="number" id="downloadLimit" min="1" max="4" value="2">
+    </div>
+
+    <div class="option-group">
+        <label>Filename Customization:</label>
+        <select id="filenameMode">
+            <option value="none">None</option>
+            <option value="prefix">Prefix</option>
+            <option value="suffix">Suffix</option>
+            <option value="both">Both</option>
+            <option value="timestamp">Timestamp (suffix)</option>
+        </select>
+        <input type="text" id="prefix" placeholder="Enter filename prefix" disabled>
+        <input type="text" id="suffix" placeholder="Enter filename suffix" disabled>
+    </div>
+
+    <div class="option-group">
+        <label for="debugLogging">Developer Debugging:</label>
+        <input type="checkbox" id="debugLogging"> Enable debug logs in console
+    </div>
+
+    <hr>
+
+    <!-- 📥 Bulk Image Download -->
+    <h2>📥 Bulk Image Download</h2>
+    <p class="description">Configure how images are downloaded in bulk.</p>
+    <div class="option-group">
+        <label for="bulkMaxDownloads">Max images per batch:</label>
+        <input type="number" id="bulkMaxDownloads" min="1" max="50" value="20">
+    </div>
+
+    <hr>
+
+    <!-- 🖼 Extract Gallery Images -->
+    <h2>🖼 Extract Gallery Images</h2>
+    <p class="description">Adjust settings for extracting images from galleries.</p>
+    <div class="option-group">
+        <label for="galleryMaxImages">Max images per second:</label>
+        <input type="number" id="galleryMaxImages" min="1" max="5" value="3">
+    </div>
+
+    <div class="option-group">
+        <label for="galleryResolution">Image Preference:</label>
+        <select id="galleryResolution">
+            <option value="highest">Only highest resolution</option>
+            <option value="all">All images in gallery</option>
+        </select>
+    </div>
+
+    <div class="option-group">
+        <label for="extractGalleryMode">Gallery Image Handling:</label>
+        <select id="extractGalleryMode">
+            <option value="immediate" selected>Download immediately</option>
+            <option value="tab">Open in new tab before downloading</option>
+        </select>
+        <p class="info-text">Choose whether to download gallery images directly or open them in a new tab first.</p>
+    </div>
+
+    <hr>
+
+    <button id="saveOptions">&#x2714; Save Settings</button>
+    <button id="closeOptions">&#x1F5D9; Close</button>
+
+    <!-- Footer with version and creator -->
+    <div class="footer">
+        <p>Version: <strong id="extension-version">Loading...</strong></p>
+        <p>Concept & Development by  :::<strong> Smid </strong>::: </p>
+    </div>
+
+    <script src="../script/options.js"></script>
+</body>
+</html>
